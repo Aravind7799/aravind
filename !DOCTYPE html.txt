@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <title>Surprise Message 🎁</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+mkdir docs
+git add docs
+git commit -m "Create docs directory required for Jekyll build"
+git push
 <style>
 body{
   margin:0;
@@ -89,3 +92,4 @@ function show(f,t,m,l){
 }
 function copy(){
   navigator.cl
+
