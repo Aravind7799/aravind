@@ -2,125 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surprise Message 🎁</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
   margin:0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg,#ff9a9e,#fad0c4);
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
 }
-.container{
+.box{
   background:#fff;
   width:90%;
-  max-width:420px;
-  border-radius:20px;
-  padding:25px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+  max-width:400px;
+  padding:20px;
+  border-radius:15px;
   text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
-h1{color:#ff4d6d}
 input,textarea{
   width:100%;
-  padding:12px;
+  padding:10px;
   margin:8px 0;
-  border-radius:10px;
-  border:1px solid #ddd;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
-textarea{height:90px;resize:none}
+textarea{height:80px}
 button{
   background:#ff4d6d;
-  color:white;
+  color:#fff;
   border:none;
-  padding:12px 20px;
-  border-radius:30px;
+  padding:10px 20px;
+  border-radius:20px;
   cursor:pointer;
-  margin-top:10px;
 }
 .card{
   display:none;
+  margin-top:15px;
   background:#fff0f5;
-  border-radius:15px;
-  padding:20px;
-  margin-top:20px;
-  animation:fade 1s ease;
-}
-@keyframes fade{
-  from{opacity:0;transform:scale(0.9)}
-  to{opacity:1;transform:scale(1)}
-}
-.link-box{
-  margin-top:10px;
-  font-size:12px;
-  word-break:break-all;
+  padding:15px;
+  border-radius:10px;
 }
 </style>
 </head>
 
 <body>
-<div class="container">
-  <h1>🎁 Sorry message</h1>
 
-  <div id="formBox">
-    <input id="from" placeholder="Aravind">
-    <input id="to" placeholder="Monica">
-    <textarea id="msg" placeholder="I Understand tjat sorry alone isn't enough. so, I promise patience, chamge and consistency because you deserve the best version pf me :)"></textarea>
-    <button onclick="createSorrynote()">Create sorry 💝</button>
+<div class="box">
+  <h2>🎁 Surprise Message</h2>
+
+  <div id="form">
+    <input id="from" placeholder="From">
+    <input id="to" placeholder="To">
+    <textarea id="msg" placeholder="Your message"></textarea>
+    <button onclick="make()">Create Surprise</button>
   </div>
 
   <div class="card" id="card">
-    <h2 id="toText"></h2>
+    <h3 id="toText"></h3>
     <p id="msgText"></p>
-    <p><strong>— <span id="fromText"></span></strong></p>
-    <button onclick="copyLink()">Copy Share Link 🔗</button>
-    <div class="link-box" id="linkBox"></div>
+    <b>— <span id="fromText"></span></b><br><br>
+    <button onclick="copy()">Copy Link 🔗</button>
+    <p id="link" style="font-size:12px;"></p>
   </div>
 </div>
 
 <script>
-function createSurprise(){
-  const from = encodeURIComponent(fromInput.value);
-  const to = encodeURIComponent(toInput.value);
-  const msg = encodeURIComponent(msgInput.value);
-
-  if(!from || !to || !msg){
-    alert("Please fill all fields ❤️");
-    return;
-  }
-
-  const link = `${location.origin}${location.pathname}?from=${from}&to=${to}&msg=${msg}`;
-  showCard(decodeURIComponent(from),decodeURIComponent(to),decodeURIComponent(msg),link);
+function make(){
+  let f=from.value,t=to.value,m=msg.value;
+  if(!f||!t||!m){alert("Fill all fields");return;}
+  let link=location.origin+location.pathname+
+  `?f=${encodeURIComponent(f)}&t=${encodeURIComponent(t)}&m=${encodeURIComponent(m)}`;
+  show(f,t,m,link);
 }
-
-function showCard(from,to,msg,link){
-  formBox.style.display="none";
+function show(f,t,m,l){
+  form.style.display="none";
   card.style.display="block";
-  toText.innerText = "Dear " + to;
-  msgText.innerText = msg;
-  fromText.innerText = from;
-  linkBox.innerText = link;
+  toText.innerText="Dear "+t;
+  msgText.innerText=m;
+  fromText.innerText=f;
+  link.innerText=l;
 }
-
-function copyLink(){
-  navigator.clipboard.writeText(linkBox.innerText);
-  alert("Share link copied 🎉");
-}
-
-// Auto-load from link
-const params = new URLSearchParams(window.location.search);
-if(params.has("msg")){
-  showCard(
-    decodeURIComponent(params.get("from")),
-    decodeURIComponent(params.get("to")),
-    decodeURIComponent(params.get("msg")),
-    window.location.href
-  );
-}
-</script>
-</body>
-</html>
+function copy(){
+  navigator.cl
