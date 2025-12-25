@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sorry Message 💝</title>
+<title>Sorry Gift Message 💝</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -16,13 +16,16 @@ body{
   align-items:center;
 }
 .box{
-  background:white;
+  background:#ffffff;
   width:90%;
   max-width:380px;
   padding:20px;
   border-radius:15px;
   text-align:center;
   box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+h2{
+  color:#6a5acd;
 }
 input{
   width:100%;
@@ -62,14 +65,17 @@ button{
 
   <div class="card" id="card">
     <h3 id="toText"></h3>
+
     <p>
       I understand that sorry alone isn’t enough.<br><br>
       So I promise patience, change, and consistency—<br>
       because you deserve the best version of me.
     </p>
+
     <b>— <span id="fromText"></span></b><br><br>
+
     <button onclick="copy()">Copy Share Link 🔗</button>
-    <p id="link" style="font-size:12px;"></p>
+    <p id="link" style="font-size:12px;word-break:break-all;"></p>
   </div>
 </div>
 
